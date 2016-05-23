@@ -18,6 +18,7 @@ defmodule PhoenixTest.Router do
 
     get "/", PageController, :index
     resources "/products", ProductController
+    resources "/prices", PriceController
   end
 
   # Other scopes may use custom stacks.

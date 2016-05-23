@@ -1,0 +1,33 @@
+<h2>Show price</h2>
+
+<ul>
+
+  <li>
+    <strong>Product:</strong>
+    <%= @price.product_id %>
+  </li>
+
+  <li>
+    <strong>From date:</strong>
+    <%= @price.from_date %>
+  </li>
+
+  <li>
+    <strong>Thru date:</strong>
+    <%= @price.thru_date %>
+  </li>
+
+  <li>
+    <strong>Min quantity:</strong>
+    <%= @price.min_quantity %>
+  </li>
+
+  <li>
+    <strong>Price:</strong>
+    <%= @price.price %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: price_path(@conn, :edit, @price) %>
+<%= link "Back", to: price_path(@conn, :index) %>
