@@ -17,8 +17,9 @@ defmodule PhoenixTest.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/products", ProductController
-    resources "/prices", PriceController
+    resources "/products", ProductController do
+      resources "/prices", PriceController
+    end
   end
 
   # Other scopes may use custom stacks.

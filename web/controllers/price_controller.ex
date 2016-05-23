@@ -5,24 +5,26 @@ defmodule PhoenixTest.PriceController do
 
   plug :scrub_params, "price" when action in [:create, :update]
 
-  def index(conn, _params) do
+  def index(conn, %{"product_id" => product_id}) do
+    product = conn.assigns[:product]
     prices = Repo.all(Price)
     render(conn, "index.html", prices: prices)
   end
 
-  def new(conn, _params) do
+  def new(conn, %{"product_id" => _product_id}) do
+    product = conn.assigns[:product]
     changeset = Price.changeset(%Price{})
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"price" => price_params}) do
+  def create(conn, %{"product_id" => _product_id, "price" => price_params}) do
     changeset = Price.changeset(%Price{}, price_params)
 
     case Repo.insert(changeset) do
       {:ok, _price} ->
         conn
         |> put_flash(:info, "Price created successfully.")
-        |> redirect(to: price_path(conn, :index))
+        |> redirect(to: product_price_path(conn, :index, @price))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -47,7 +49,7 @@ defmodule PhoenixTest.PriceController do
       {:ok, price} ->
         conn
         |> put_flash(:info, "Price updated successfully.")
-        |> redirect(to: price_path(conn, :show, price))
+        |> redirect(to: product_price_path(conn, :show, price))
       {:error, changeset} ->
         render(conn, "edit.html", price: price, changeset: changeset)
     end
@@ -62,6 +64,6 @@ defmodule PhoenixTest.PriceController do
 
     conn
     |> put_flash(:info, "Price deleted successfully.")
-    |> redirect(to: price_path(conn, :index))
+    |> redirect(to: product_price_path(conn, :index, @price))
   end
 end

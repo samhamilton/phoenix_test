@@ -29,5 +29,5 @@
 
 </ul>
 
-<%= link "Edit", to: price_path(@conn, :edit, @price) %>
-<%= link "Back", to: price_path(@conn, :index) %>
+<%= link "Edit", to: product_price_path(@conn, :edit, @price) %>
+<%= link "Back", to: product_price_path(@conn, :index, @product) %>

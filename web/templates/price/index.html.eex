@@ -22,13 +22,13 @@
       <td><%= price.price %></td>
 
       <td class="text-right">
-        <%= link "Show", to: price_path(@conn, :show, price), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: price_path(@conn, :edit, price), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: price_path(@conn, :delete, price), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        <%= link "Show", to: product_price_path(@conn, :show, @product, price), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: product_price_path(@conn, :edit, @product, price), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: product_price_path(@conn, :delete, @product, price), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<%= link "New price", to: price_path(@conn, :new) %>
+<%= link "New price", to: product_price_path(@conn, :new, @product) %>

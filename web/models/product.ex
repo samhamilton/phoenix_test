@@ -10,6 +10,8 @@ defmodule PhoenixTest.Product do
     field :sales_disc_when_not_avail, :boolean, default: false
     field :support_discontinuation_date, Ecto.DateTime
 
+    has_many :prices, PhoenixTest.Price
+
     timestamps
   end
 
