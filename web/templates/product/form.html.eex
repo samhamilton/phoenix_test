@@ -1,0 +1,53 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :product_name, class: "control-label" %>
+    <%= text_input f, :product_name, class: "form-control" %>
+    <%= error_tag f, :product_name %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :description, class: "control-label" %>
+    <%= text_input f, :description, class: "form-control" %>
+    <%= error_tag f, :description %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :comments, class: "control-label" %>
+    <%= text_input f, :comments, class: "form-control" %>
+    <%= error_tag f, :comments %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :sales_introduction_date, class: "control-label" %>
+    <%= datetime_select f, :sales_introduction_date, class: "form-control" %>
+    <%= error_tag f, :sales_introduction_date %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :sales_discontinuation_date, class: "control-label" %>
+    <%= datetime_select f, :sales_discontinuation_date, class: "form-control" %>
+    <%= error_tag f, :sales_discontinuation_date %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :sales_disc_when_not_avail, class: "control-label" %>
+    <%= checkbox f, :sales_disc_when_not_avail, class: "form-control" %>
+    <%= error_tag f, :sales_disc_when_not_avail %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :support_discontinuation_date, class: "control-label" %>
+    <%= datetime_select f, :support_discontinuation_date, class: "form-control" %>
+    <%= error_tag f, :support_discontinuation_date %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
